@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  theia:
+    image:  theiaide/theia
+    ports:
+      - "3000:3000"
+    networks:
+      - web
+    volumes:
+      - /home/chuck/sites:/home/project:cached
+
+networks:
+  web:
+    driver: bridge
+
+

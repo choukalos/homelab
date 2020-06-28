@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  minecraft:
+    image: itzg/minecraft-bedrock-server
+    environment:
+      EULA: "TRUE"
+      GAMEMODE: survival
+      DIFFICULTY: normal
+      SERVER_NAME: "The Flintstones"
+      MAX_PLAYERS: 6
+      MAX_THREADS: 1
+    networks:
+      - minecraft
+    ports:
+      - "19132:19132/udp"
+    volumes:
+      - /home/chuck/data/minecraft:/data
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+         limits:
+           cpus: '1.0'
+           memory: 2000M
+
+
+
+volumes:
+  bds: {}
+
+networks:
+  minecraft:
+    driver: bridge
+
+

@@ -1,0 +1,21 @@
+---
+version: "2"
+services:
+  domoticz:
+    image: linuxserver/domoticz
+    container_name: domoticz
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - WEBROOT=domoticz #optional
+    volumes:
+      - path to data:/config
+    ports:
+      - 8080:8080
+      - 6144:6144
+      - 1443:1443
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    restart: unless-stopped
+

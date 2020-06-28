@@ -1,0 +1,27 @@
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: always
+    expose:
+      - 3000
+    volumes:
+      - data:/var/lib/grafana
+      - config:/etc/grafana
+    networks:
+      - web
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.frontend.rule=Host:graphs.brooks.network"
+
+volumes:
+  data:
+  config:
+
+networks:
+  web:
+    external: true
