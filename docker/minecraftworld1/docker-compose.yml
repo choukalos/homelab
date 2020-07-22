@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    container_name:  "minecraftworld1"
+    environment:
+      EULA: "TRUE"
+      GAMEMODE: survival
+      DIFFICULTY: normal
+      TYPE: FORGE
+      ENABLE_RCON: "TRUE"
+      RCON_PASSWORD": "password"
+      SERVER_NAME: "Peanutsville 1.16"
+      OPS: "DyELaN123"
+      MAX_PLAYERS: 10
+      MAX_THREADS: 2
+
+    networks:
+      - minecraft
+    ports:
+      - "25565:25565"
+    volumes:
+      - /home/chuck/data/minecraftworld1:/data
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+         limits:
+           cpus: '1.0'
+           memory: 2000M
+
+networks:
+  minecraft:
+    driver: bridge
+
+

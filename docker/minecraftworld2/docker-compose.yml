@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    container_name: minecraftworld2
+    environment:
+      EULA: "TRUE"
+      VERSION: "1.15.2"
+      GAMEMODE: survival
+      DIFFICULTY: normal
+      TYPE: FORGE
+      ENABLE_RCON:   "TRUE"
+      RCON_PASSWORD: "password"
+      SERVER_NAME:   "Modsville - 1.15.2"
+      OPS: "DyELaN123"
+      MAX_PLAYERS: 10
+      MAX_THREADS: 2
+    networks:
+      - minecraft
+    ports:
+      - "25566:25565"
+    volumes:
+      - /home/chuck/data/minecraftworld2:/data
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+         limits:
+           cpus: '1.0'
+           memory: 2000M
+
+networks:
+  minecraft:
+    driver: bridge
+
+

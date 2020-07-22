@@ -3,19 +3,25 @@ version: '3.4'
 services:
   minecraft:
     image: itzg/minecraft-server
+    container_name: minecraftworld3
     environment:
       EULA: "TRUE"
+      VERSION: "1.7.10"
       GAMEMODE: survival
       DIFFICULTY: normal
-      SERVER_NAME: "Peanutsville"
+      TYPE: FORGE
+      ENABLE_RCON:   "TRUE"
+      RCON_PASSWORD: "password"
+      SERVER_NAME:   "Third World - 1.7.10"
+      OPS: "DyELaN123"
       MAX_PLAYERS: 10
       MAX_THREADS: 2
     networks:
       - minecraft
     ports:
-      - "25565:25565"
+      - "25567:25565"
     volumes:
-      - /home/chuck/data/minecraftjava:/data
+      - /home/chuck/data/minecraftworld3:/data
     stdin_open: true
     tty: true
     deploy:
