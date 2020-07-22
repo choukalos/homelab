@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  homebridge:
+    image:           oznu/homebridge:latest
+    container_name:  "homebridge2"
+    network_mode:    "host"
+    restart:         always
+    environment:
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8080
+    volumes:
+      - /home/chuck/data/homebridge2:/homebridge
+  
