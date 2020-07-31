@@ -7,8 +7,8 @@ services:
     expose:
       - 3000
     volumes:
-      - data:/var/lib/grafana
-      - config:/etc/grafana
+      - /home/chuck/data/grafana/data:/var/lib/grafana
+      - /home/chuck/data/grafana/config:/etc/grafana
     networks:
       - web
     env_file:
@@ -16,11 +16,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
-      - "traefik.frontend.rule=Host:graphs.brooks.network"
-
-volumes:
-  data:
-  config:
+      - "traefik.frontend.rule=Host:grafana.choukalos.org"
 
 networks:
   web:

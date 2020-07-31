@@ -4,6 +4,7 @@ services:
   minecraft:
     image: itzg/minecraft-server
     container_name:  "minecraftworld1"
+    restart: always
     environment:
       EULA: "TRUE"
       GAMEMODE: survival

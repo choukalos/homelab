@@ -10,7 +10,7 @@ services:
       - TZ=Europe/London
       - WEBROOT=domoticz #optional
     volumes:
-      - path to data:/config
+      - /home/chuck/data/deconz/:/config
     ports:
       - 8080:8080
       - 6144:6144
