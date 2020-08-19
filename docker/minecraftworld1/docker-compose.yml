@@ -7,9 +7,9 @@ services:
     restart: always
     environment:
       EULA: "TRUE"
+      SEED: "-2143500864"
       GAMEMODE: survival
       DIFFICULTY: normal
-      TYPE: FORGE
       ENABLE_RCON: "TRUE"
       RCON_PASSWORD": "password"
       SERVER_NAME: "Peanutsville 1.16"

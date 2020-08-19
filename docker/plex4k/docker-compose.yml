@@ -1,0 +1,28 @@
+---
+version: "3.0"
+services:
+  plex:
+    image: linuxserver/plex
+    container_name:  plex4k
+    restart: unless-stopped
+    environment:
+      - VERSION=docker
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      - /home/chuck/data/plex4k/config:/config
+      - /mnt/video/Movies/4kMovies:/movies
+    networks:
+      - default
+    ports:
+      - "32400:32400"
+      - "5353:5353"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4000M

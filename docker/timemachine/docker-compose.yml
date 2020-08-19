@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  timemachine:
+    image:  odarriba/docker-timemachine
+    container_name: "timemachine"
+    restart: alway
+    ports:
+      - "548;548"
+      - "636:636"
+    volume:
+      - /home/chuck/data/timemachine:/timemachine
+    deploy:
+      resources:
+         limits:
+            cpus: '0.5'
+            memory: 1000M
+
+networks:
+  default:
+    driver: bridge
+
