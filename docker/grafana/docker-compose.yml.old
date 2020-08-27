@@ -5,11 +5,19 @@ services:
     container_name: grafana
     user: "1000"
     restart: always
+    expose:
+      - 3000
     volumes:
       - /home/chuck/data/grafana:/var/lib/grafana
     networks:
-      - default
-    ports:
-      - 3000:3000
+      - web
     env_file:
       - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.frontend.rule=Host:grafana.choukalos.org"
+
+networks:
+  web:
+    external: true

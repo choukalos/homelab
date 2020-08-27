@@ -1,14 +1,21 @@
-version: "3.3"
+version: "3.7"
 services:
   timemachine:
-    image:  odarriba/docker-timemachine
+    image:  odarriba/timemachine
     container_name: "timemachine"
-    restart: alway
+    restart: always
     ports:
-      - "548;548"
+      - "548:548"
       - "636:636"
-    volume:
-      - /home/chuck/data/timemachine:/timemachine
+    ulimits:
+      nofile:
+        soft: "65536"
+        hard: "65536"
+    volumes:
+      - /mnt/timemachine:/timemachine
+      - type: bind
+        source: /home/chuck/data/timemachine/entrypoint.sh
+        target: /entrypoint.sh
     deploy:
       resources:
          limits:
