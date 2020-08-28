@@ -1,0 +1,15 @@
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    user: "1000"
+    restart: always
+    volumes:
+      - /home/chuck/data/grafana:/var/lib/grafana
+    networks:
+      - default
+    ports:
+      - 3000:3000
+    env_file:
+      - .env

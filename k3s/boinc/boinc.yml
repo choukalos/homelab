@@ -1,0 +1,27 @@
+### Boinc on K3s
+#
+#
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: boinc-workers
+spec:
+  selector:
+    name: boinc-workers
+    version: v1
+  template:
+    metadata:
+      labels:
+        name: boinc-workers
+        version: v1
+        priority: charity
+    spec:
+      containers:
+      - name: boinc-workers
+        image: linuxserver/boinc
+        ports:
+        - containerPort: 8080
+
+
+
