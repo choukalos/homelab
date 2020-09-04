@@ -24,3 +24,13 @@ services:
       - /var/snap/docker/current/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
 
+  snmp-exporter:
+    image: prom/snmp-exporter
+    container_name: snmp_exporter
+    restart: always
+    ports:
+      - 9116:9116
+    volumes:
+      - ./snmp.yml:/etc/snmp_exporter/snmp.yml
+
+

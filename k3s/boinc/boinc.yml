@@ -22,6 +22,11 @@ spec:
         image: linuxserver/boinc
         ports:
         - containerPort: 8080
+      nodeSelector:
+        hosttype: rpi
+
+
+
 
 
 

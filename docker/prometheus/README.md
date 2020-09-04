@@ -15,19 +15,15 @@ Download your device(s) MIBs
 * Orbi MIBs are found ...
 * Synology MIBs are found ...
 
-Build a local version of the image (don't git save this one)
+Create a generator.yml file based on the mibs you want to scrape.  Frankly I don't get this so I googled for the device I was interested in and found someone else's generator.yml which I then copied/pasted in and ran the exporter until I got a cleanly generated snmp.yml file out.
+
+To run the exporter pointing at your mibs directory with the generator.yml you created:
+
 ``
-git cone https://github.com/prometheus/snmp_exporter
-cd snmp_exporter/generator/
-docker build -t snmp-generator .
+sudo docker run -it -v $PWD/mibs:/root/.snmp/mibs -v $PWD/generator.yml:/opt/generator.yml:ro -v $PWD/:/opt/ snmp-generator 
 ``
 
-Then cd into this folder and do the following:
-``
-docker run -ti \
- -v $PWD/mibs:/root/.snmp/mibs \
- -v $PWD/generator.yml:/opt/generator.yml:ro \
- -v $PWD/:/opt/ \
- snmp-generator generate
+This command runs a docker image passing in your generator.yml and the mibs you've collected and creates an snmp.yml file
+
 
 

@@ -1,0 +1,65 @@
+modules:
+  cisco:
+    walk:
+      - sysUpTime
+      - interfaces
+      - ip
+      - icmp
+      - udp
+      - ifMIB
+      - etherMIB
+      - tcpMIB
+      - udpMIB
+
+  ubiquiti_edgemax:
+    walk:
+      - hrSystemUptime
+      - hrSystemNumUsers
+      - hrSystemProcesses
+
+      - hrStorage
+
+      - interfaces
+
+      - ipTrafficStats
+      - ipInReceives
+      - ipInHdrErrors
+      - ipInAddrErrors
+      - ipForwDatagrams
+      - ipInUnknownProtos
+      - ipInDiscards
+      - ipInDelivers
+      - ipOutRequests
+      - ipOutDiscards
+      - ipOutNoRoutes
+      - ipReasmReqds
+      - ipReasmOKs
+      - ipReasmFails
+      - ipFragOKs
+      - ipFragFails
+      - ipFragCreates
+
+      - icmp
+
+      - ifXTable
+      - 1.3.6.1.4.1.2021.4 # UCD memory
+      - 1.3.6.1.4.1.2021.10 # UCD Load
+      - systemStats
+
+    lookups:
+      - source_indexes: [ifIndex]
+        lookup: ifAlias
+        drop_source_indexes: true
+
+      - source_indexes: [ipIfStatsIfIndex]
+        lookup: ifAlias
+        drop_source_indexes: true
+
+      - source_indexes: [hrStorageIndex]
+        lookup: hrStorageDescr
+        drop_source_indexes: true
+
+      - source_indexes: [laIndex]
+        lookup: laNames
+        drop_source_indexes: true
+
