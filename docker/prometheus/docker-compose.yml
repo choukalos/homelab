@@ -1,4 +1,8 @@
 version: '3'
+
+networks:
+  loki:
+
 services:
   prometheus:
     image: prom/prometheus
@@ -32,5 +36,22 @@ services:
       - 9116:9116
     volumes:
       - ./snmp.yml:/etc/snmp_exporter/snmp.yml
+
+  loki:
+    image: grafana/loki:1.5.0
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - loki
+
+  promtail:
+    image: grafana/promtail:1.5.0
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/docker-config.yaml
+    networks:
+      - loki
+
 
 

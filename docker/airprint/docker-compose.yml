@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  airprint:
+    image:  chuckcharlie/cups-avahi-airprint
+    container_name: "airprint"
+    restart: unless-stopped
+    volumes:
+      - /home/chuck/data/airprint/config:/config
+      - /home/chuck/data/airprint/services:/services
+    environment:
+      CUPSADMIN: "admin"
+      CUPSPASSWORD: "mypassword"
+    network_mode: host
+    deploy:
+      resources:
+         limits:
+            cpus: '0.5'
+            memory: 256M
+

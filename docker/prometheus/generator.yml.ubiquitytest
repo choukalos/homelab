@@ -1,0 +1,15 @@
+modules:
+  edgemax:
+    walk:
+      - ifHCInOctets
+      - ifHCOutOctets
+      - ssCpuIdle
+      - memTotalFree
+      - memTotalReal
+      - hrSystemUptime
+    lookups:
+      - old_index: ifIndex
+        # Use OID to avoid conflict with Netscaler NS-ROOT-MIB.
+        new_index: 1.3.6.1.2.1.31.1.1.1.1 # ifName
+
+

@@ -46,12 +46,7 @@ modules:
       - 1.3.6.1.4.1.2021.10 # UCD Load
       - systemStats
 
-      - ifHCInOctets
-      - ifHCOutOctets
-
     lookups:
-      - old_index: ifIndex
-        new_index: 1.3.6.1.2.1.31.1.1.1.1 # IfName, use OID to avoid conflict with Netscaler NS-ROOT-MIB
       - source_indexes: [ifIndex]
         lookup: ifAlias
         drop_source_indexes: true

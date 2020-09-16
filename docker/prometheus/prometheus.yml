@@ -40,7 +40,7 @@ scrape_configs:
       - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: my-service_name:9116
+        replacement: snmp_exporter:9116
   
   # job needed:  Traefik
   # job needed:  Synology SNMP
