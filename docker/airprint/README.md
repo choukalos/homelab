@@ -19,4 +19,11 @@ Connection:  lpd://ipaddress/BINARY_P1
 * tried ipp://ipaddress/ipp/port1 
 
 # details
-chuckcharlie/cups-avahi-airprint docker container
+chuckcharlie/cups-avahi-airprint docker container; alpine linux based
+
+write up here suggests using brother driver which expects apt and bash; not in an Alpine linux distribution
+* https://thestandardoutput.com/posts/install-brother-hl-2270dw-printer-on-debian-jessie/ 
+
+Explore switching to this image which is debian based and running the brother driver wrapper in the container
+* https://github.com/DrPsychick/docker-cups-airprint 
+

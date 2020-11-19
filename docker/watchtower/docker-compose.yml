@@ -1,3 +1,4 @@
+# Run once per day at 10pm to check and update docker images
 version: '3'
 services:
   watchtower:
@@ -6,5 +7,7 @@ services:
     restart: always
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
+    command:  --schedule "0 22 * * *"
+
 
 

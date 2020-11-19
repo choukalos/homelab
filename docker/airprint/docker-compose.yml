@@ -8,6 +8,7 @@ services:
     volumes:
       - /home/chuck/data/airprint/config:/config
       - /home/chuck/data/airprint/services:/services
+      - ./linux-brprinter-installer-2.2.2-1.sh:/linux-brprinter-installer-2.2.2-1.sh
     environment:
       CUPSADMIN: "admin"
       CUPSPASSWORD: "mypassword"

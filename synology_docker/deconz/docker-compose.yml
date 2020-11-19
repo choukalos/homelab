@@ -1,0 +1,15 @@
+version: "2"
+services:
+  deconz:
+    image: marthoc/deconz
+    container_name: deconz
+    network_mode: host
+    restart: always
+    volumes:
+	  - /volume1/docker/deconz:/root/.local/share/dresden-elektronik/deCONZ
+    devices:
+      - /dev/ttyACM0
+    environment:
+      - DECONZ_WEB_PORT=8081
+      - DECONZ_WS_PORT=8082
+

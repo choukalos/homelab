@@ -1,0 +1,12 @@
+version: '3'
+services:
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    restart: always
+    volumes:
+      - /home/chuck/data/n8n:/root/.n8n
+    networks:
+      - default
+    ports:
+      - 5678:5678
