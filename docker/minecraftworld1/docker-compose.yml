@@ -7,7 +7,6 @@ services:
     restart: always
     environment:
       EULA: "TRUE"
-      SEED: "-2143500864"
       GAMEMODE: survival
       DIFFICULTY: normal
       ENABLE_RCON: "TRUE"

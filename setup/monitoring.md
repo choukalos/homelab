@@ -8,3 +8,7 @@ sudo download-mibs
 # Download MIBS for Edgerouter from /usr/share/mibs/
 # copy them into /home/$USER/.snmp/mibs/
 
+# on MySQL Server
+# setup mysql user 'my2'
+# setup statistics stored proceedures; https://github.com/meob/my2Collector 
+# Note uses Grafana dashboard 7991
