@@ -16,7 +16,7 @@ RUN   apk --no-cache upgrade && \
 RUN git clone https://github.com/tpruvot/cpuminer-multi 
 WORKDIR cpuminer-multi
 RUN ./autogen.sh
-RUN ./configure CFLAGS="-O3 -march=native" --with-crypto --with-curl
+RUN ./configure CFLAGS="-O3" --with-crypto --with-curl
 RUN make install
 RUN apk del --purge \
         libcurl \

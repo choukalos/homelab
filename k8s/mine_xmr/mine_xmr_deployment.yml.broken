@@ -18,10 +18,11 @@ spec:
     spec: 
       containers: 
         - name:  mine-xmr
-          image:  choukalos/alpine-xmrig:latest
+          image:  choukalos/alpine-cpuminer:latest
           imagePullPolicy:  Always
           command: 
-            - ./xmrig
+            - ./cpuminer
+            - "--algo=cryptonight"
             - "--threads=1"
             - "-o"
             - "stratum+tcp://monerohash.com:2222"
@@ -29,7 +30,6 @@ spec:
             - 48XhYHerxvcREeucZyg5uGiP5gw4buYS4PAMBvADgq7HE62hjFJLa1Rh37f4Gx7FkBPdmEBrErebhC9RBv6i3ckrSwew4rN
             - "-p"
             - x
-            - "-k"
           resources: 
             limits: 
               cpu: 1.0
