@@ -1,0 +1,36 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mine-xmr-deployment
+#  namespace: mine_xmr
+  labels:
+    app: mine-xmr
+spec: 
+  replicas: 8
+  selector: 
+    matchLabels: 
+      app: mine-xmr
+  template: 
+    metadata: 
+      labels: 
+        app: mine-xmr
+    spec: 
+      containers: 
+        - name:  mine-xmr
+          image:  choukalos/alpine-cpuminer:latest
+          imagePullPolicy:  Always
+          command: 
+            - ./cpuminer
+            - "--algo=cryptonight"
+            - "-o"
+            - "stratum+tcp://monerohash.com:2222"
+            - "-u"
+            - 48XhYHerxvcREeucZyg5uGiP5gw4buYS4PAMBvADgq7HE62hjFJLa1Rh37f4Gx7FkBPdmEBrErebhC9RBv6i3ckrSwew4rN
+            - "-p"
+            - x
+          resources: 
+            limits: 
+              cpu: 250m
+              memory: 100Mi
+
