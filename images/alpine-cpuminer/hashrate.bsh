@@ -1,4 +1,4 @@
 #!/bin/bash
-# Rough hashrate tool
+# Rough tool to give you an idea of your cpus hashrate
 time for i in {1..1000}; do head -n 4096 /dev/urandom | openssl sha256 > /dev/null; done
 
