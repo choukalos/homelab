@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   name: mine-xmr-deployment
-#  namespace: mine_xmr
   labels:
     app: mine-xmr
 spec: 
@@ -22,14 +21,17 @@ spec:
           imagePullPolicy:  Always
           command: 
             - ./xmrig
-            - "--threads=1"
-            - "-o"
-            - "stratum+tcp://monerohash.com:2222"
-            - "-u"
-            - 48XhYHerxvcREeucZyg5uGiP5gw4buYS4PAMBvADgq7HE62hjFJLa1Rh37f4Gx7FkBPdmEBrErebhC9RBv6i3ckrSwew4rN
-            - "-p"
+            - --donate-level
+            - '1'
+            - --max-cpu-usage
+            - '95'
+            - -o
+            - 'monerohash.com:2222'
+            - -u
+            - 48XhYHerxvcREeucZyg5uGiP5gw4buYS4PAMBvADgq7HE62hjFJLa1Rh37f4Gx7FkBPdmEBrErebhC9RBv6i3ckrSwew4rN 
+            - -p
             - x
-            - "-k"
+            - -k
           resources: 
             limits: 
               cpu: 1.0
